@@ -1,0 +1,1035 @@
+@import "./normalize_css.css";
+
+/* Variables */
+
+:root {
+  --primary_color: #2584ff;
+  --secondary_color: #00d9ff;
+  --accent_color: #ff3400;
+  --heading_color: #1b0760;
+  --text_color: #918ca4;
+  --text_darker_color: #5c5577;
+  --border_color: #ccc;
+  --border_radius: 40px;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+/* Typography */
+
+/* 
+  With the psudo element selector ::selection we are going to  specify the color of the selected text.
+*/
+::selection {
+  background: var(--primary_color);
+  color: white;
+}
+html {
+  /* 
+    Here we use 62.5% because the default size of web pages is 16px, if we give it 
+    62.5% * 16px = 10px, its easyer for us to set the font size of each element,
+    knowing that the size of the parent element is 10px.
+  */
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--text_color);
+  font-size: 2.4rem;
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--heading_color);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 7rem;
+}
+
+h2 {
+  font-size: 4rem;
+}
+
+h3 {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+p {
+  margin-top: 0;
+}
+
+/*  
+  General container to stablish the max width.
+*/
+.container {
+  max-width: 1140px;
+  margin: 0 auto; /* 0 for vertical margin / auto for horizontal margin */
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 1.8rem;
+  }
+
+  h1 {
+    font-size: 8rem;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+
+  h3 {
+    font-size: 2.4rem;
+  }
+}
+
+/* Links */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.link_arrow {
+  color: var(--accent_color);
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Adding the arrow at the end of the anchor element */
+.link_arrow::after {
+  content: "-->";
+  margin-left: 5px;
+  transition: margin-left 0.25s;
+}
+
+/* Appling a effect when the link is hovered, im going to target the arrow */
+.link_arrow:hover::after {
+  margin-left: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+  .link_arrow {
+    font-size: 1.5rem;
+  }
+}
+
+/* Badges */
+
+.badge {
+  border-radius: 2.4rem;
+  color: white;
+  display: inline;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  white-space: nowrap;
+}
+
+/* Using BEM naming convention to separate the block element from the modifier */
+.badge--primary {
+  background: var(--primary_color);
+  font-weight: 800;
+}
+
+.badge--secondary {
+  background: var(--secondary_color);
+}
+
+.badge--small {
+  font-size: 1.6rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .badge {
+    font-size: 1.5rem;
+  }
+
+  .badge--small {
+    font-size: 1.2rem;
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+/* Lists */
+
+.list {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* In inline list we want to convert each eleemnt in inline elements */
+.list--inline .list__item {
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+.list--bullet {
+  list-style-image: url("/data/icons/tick.svg");
+  padding-left: 3rem;
+  color: var(--heading_color);
+}
+
+/* Applying padding to the text after the bullet list image */
+.list--bullet .list__item {
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .list--bullet .list__item {
+    padding-left: 0;
+  }
+}
+
+/* Icons */
+
+/* For icons i went to svgsprit.es to generate a sprite of all icons */
+.icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* To apply color to an SVG we use the 'fill' property */
+.icon--primary {
+  fill: var(--primary_color);
+}
+
+.icon--white {
+  fill: white;
+}
+
+.icon--small {
+  width: 30px;
+  height: 30px;
+}
+
+.icon_container {
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3f9fa;
+}
+
+.icon_container--accent {
+  background: var(--accent_color);
+}
+
+/* Buttons */
+
+.btn {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  border-radius: var(--border_radius);
+  border: none;
+  outline: 0;
+  padding: 2rem 4vw;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+  margin: 1rem 0;
+  font-weight: 600;
+}
+
+.btn .icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  vertical-align: middle;
+}
+
+.btn--accent {
+  background: var(--accent_color);
+  color: white;
+  transition: background 0.15s;
+}
+
+.btn--accent:hover {
+  background: #fd7272;
+}
+
+.btn--outline {
+  background: white;
+  border: 2px solid var(--heading_color);
+  color: var(--heading_color);
+  transition: color 0.25s, background 0.25s;
+}
+
+.btn--outline:hover {
+  color: white;
+  background: var(--heading_color);
+}
+
+.btn--secondary {
+  color: white;
+  background: var(--secondary_color);
+  transition: background 0.25s;
+}
+
+.btn--secondary:hover {
+  background: #8deffa;
+}
+
+.btn--block {
+  width: 100%;
+  display: inline-block;
+}
+
+.btn--streched_padding {
+  padding-inline: 6rem;
+}
+@media screen and (min-width: 1024px) {
+  .btn {
+    font-size: 1.5rem;
+    padding: 2rem 4rem;
+  }
+}
+
+/* Inputs */
+
+.domain_input {
+  border-radius: var(--border_radius);
+  border: 1px solid var(--border_color);
+  color: var(--heading_color);
+  font-size: 2rem;
+  outline: 0;
+  padding: 2rem 3rem;
+}
+
+::placeholder {
+  color: #a6a5ac;
+}
+
+.input_group {
+  border: 1px solid var(--border_color);
+  border-radius: var(--border_radius);
+  display: flex;
+}
+
+/* Using nesting to target inputs inside a container */
+.input_group .domain_input {
+  border: 0;
+  flex-grow: 1;
+  /*padding: 1.5rem 1rem;*/ /* We can uncomment this if the button is located first */
+  width: 0;
+}
+
+.input_group .btn {
+  margin: 4px;
+}
+
+@media screen and (min-width: 1024px) {
+  .domain_input {
+    font-size: 1.5rem;
+  }
+}
+
+/* Cards */
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 0 20px 10px #f3f3f3;
+  overflow: hidden;
+}
+
+.card__header,
+.card__body {
+  padding: 2rem 3rem;
+}
+
+.card--primary .card__header {
+  background-color: var(--primary_color);
+  color: white;
+}
+
+.card--primary .badge--primary {
+  background: #126de4;
+}
+
+.card--secondary .card__header {
+  background-color: var(--secondary_color);
+  color: white;
+}
+
+.card--secondary .badge--secondary {
+  background: #02cdf1;
+}
+/* Plan component */
+/* Its the card component filled with all other elements needed for the correct visualitation */
+
+.plan__name {
+  color: white;
+  margin: 0;
+  font-weight: 500;
+  font-size: 2.4rem;
+}
+
+.plan--big {
+  scale: 1.1;
+}
+
+.plan__price {
+  font-size: 6rem;
+}
+
+.plan__billing_cylce {
+  font-size: 2.4rem;
+  font-weight: 300;
+  opacity: 0.8;
+  margin-right: 1rem;
+}
+
+.plan__description {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  display: block;
+}
+
+.plan .list__item {
+  margin-bottom: 2rem;
+}
+
+/* Badge - Popular */
+/* 
+  We use pseudo element selector to insert the badge, before the header of plan element 
+*/
+.plan--popular .card__header::before {
+  content: url(../data/images/popular.svg);
+  display: inline-block;
+  width: 40px;
+  position: absolute;
+  top: -6px;
+  right: 5%;
+}
+
+/* 
+  Since we are using absolute positioning for the popular badge,
+  we need to set the parent positioning to relative.
+  So if we have a plan that is popular the card__header should have
+  relative postitioning.
+*/
+.plan--popular .card__header {
+  position: relative;
+}
+
+/* Since we are using  */
+@media screen and (min-widht: 1024px) {
+  .plan__name {
+    font-size: 1.4rem;
+  }
+
+  .plan__price {
+    font-size: 5rem;
+  }
+
+  .plan__billing_cylce {
+    font-size: 1.6rem;
+  }
+
+  .plan__description {
+    font-size: 1.7rem;
+  }
+}
+
+/* Media Objects */
+
+.media {
+  display: flex;
+  margin-bottom: 4rem;
+}
+
+.media__icon {
+  margin-top: 0;
+}
+
+.media__body {
+  margin: 0 2rem;
+}
+
+.media__title {
+  margin: 0 0 1rem;
+}
+
+.media__description {
+  margin: 0;
+}
+
+/* Quotes */
+
+.quote {
+  font-size: 3rem;
+  font-style: italic;
+  color: var(--text_darker_color);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.quote__text::before {
+  content: open-quote;
+}
+
+.quote__text::after {
+  content: close-quote;
+}
+
+.quote__line {
+  position: relative;
+  bottom: 15px;
+}
+
+.quote__author {
+  font-size: 3rem;
+  font-weight: 700;
+  font-style: normal;
+  margin-bottom: 0;
+}
+
+.quote__company {
+  color: var(--heading_color);
+  font-style: normal;
+  font-size: 2rem;
+  opacity: 40%;
+}
+
+@media screen and (min-width: 1024px) {
+  .quote {
+    font-size: 2rem;
+  }
+
+  .quote__author {
+    font-size: 2.4rem;
+  }
+
+  .quote__company {
+    font-size: 1.6rem;
+  }
+
+  .quote__line {
+    bottom: 20px;
+  }
+}
+
+/* Grids */
+
+.grid {
+  display: grid;
+}
+
+@media screen and (min-width: 768px) {
+  /*  
+    This class only come to existance if the screen size is lower than 768 px 
+  */
+  .grid--cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .grid--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Testimonials */
+
+.testimonial__card {
+  padding: 3rem 6rem;
+}
+
+.testimonial__image_cont {
+  margin-bottom: 6rem;
+  position: relative;
+}
+
+.testimonial__image_cont > img {
+  width: 100%;
+}
+
+.testimonial__image_cont > .icon_container {
+  position: absolute;
+  top: 3rem;
+  right: -32px; /* 64px /2 (icon_conteiner width divided by two to center it) */
+}
+
+@media screen and (min-width: 768px) {
+  .testimonial__card {
+    align-items: center;
+    max-width: 110rem;
+    overflow: hidden;
+  }
+
+  .testimonial__image_cont {
+    margin: 0 7rem 0 0;
+    max-width: 40rem;
+  }
+
+  .testimonial__card .quote,
+  .testimonial__card .quote__author {
+    font-size: 2.4rem;
+  }
+
+  .testiomonal__card .quote__text {
+    margin-bottom: 5rem;
+  }
+}
+
+/* Callouts */
+.callout {
+  padding: 4rem;
+  border-radius: 5px;
+  max-width: 980px;
+  margin: auto;
+}
+
+.callout__content {
+  text-align: center;
+}
+
+.callout--primary {
+  background: var(--primary_color);
+  color: white;
+}
+
+.callout__title {
+  color: white;
+  margin: 0 0 2.5rem;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.callout .btn {
+  align-self: center;
+  justify-self: center;
+}
+
+@media screen and (min-width: 768px) {
+  .callout .grid--cols-2 {
+    grid-template-columns: 1fr auto;
+  }
+
+  .callout__content {
+    text-align: left;
+  }
+
+  .callout .btn {
+    justify-self: start;
+    margin: 0 2rem;
+  }
+}
+
+/* Collapsibles */
+
+.collapsible__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.collapsible__header:hover {
+  cursor: pointer;
+}
+
+.collapsible__title {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.collapsible__icon {
+  transform: rotate(270deg);
+  transition: transform 0.3s;
+}
+
+.collapsible__content {
+  /* 
+    Here i am using max-height = 0 and overflow = hidden 
+      instead of display: none, to hide this element.
+    Im doing this so i can apply transition to this element. with 'display'
+      property you cant apply transition.
+  */
+  /* display: none;*/
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.collapsible__expanded .collapsible__icon {
+  transform: rotate(0);
+}
+
+.collapsible__expanded .collapsible__content {
+  /*  
+    With max-height = 100vh we are saying that the height of the content
+      area can be maximum of 100% of the height of the viewport.
+    But its not going to stretch more than its content, because we're using the
+      max-height. 
+    If instead we would use the height property with 100vh, the content area would
+      take the entire height of the viewport.
+    The actual height will be determined by the content of this element.
+  */
+  max-height: 100vh;
+  opacity: 1;
+}
+
+@media screen and (min-width: 768) {
+  .collapsible__title {
+    font-size: 1.6rem;
+  }
+
+  .collapsible__content {
+    font-size: 1.5rem;
+  }
+}
+/* Blocks */
+
+.block {
+  /* Assigning variables */
+  --padding-vertical: 6rem;
+  padding: var(--padding-vertical) 2rem;
+}
+
+.block__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.block__heading {
+  margin-top: 0;
+}
+
+.block--dark {
+  background-color: #000;
+  color: #7b858b;
+}
+
+.block--black_and_white {
+  background: linear-gradient(
+    to top,
+    #232323 0%,
+    #232323 50%,
+    white 50%,
+    white 100%
+  );
+}
+.block--dark h1,
+.block--dark h2,
+.block--dark h3 {
+  color: white;
+}
+
+.block--skewed-right {
+  padding-bottom: calc(var(--padding-vertical) + 4rem);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 90%);
+}
+
+.block--skewed-left {
+  padding-bottom: calc(var(--padding-vertical) + 4rem);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0 100%);
+}
+
+/* Navigation Bar */
+
+.navigation_bar {
+  padding: 0 1rem;
+  display: flex;
+  background: #000;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* So the navigation list shows on a second row */
+}
+
+.navigation__logo {
+  transform: translateY(5px);
+}
+
+.navigation__list {
+  width: 100%;
+  margin: 0;
+}
+
+.navigation__item {
+  padding: 0.5rem 2rem;
+  border-bottom: 1px solid #222;
+}
+
+/* 
+  Here we use direct child selector in an <a> element, because
+    for links the structure will never change, we should always
+    have anchors on a navigation bar.
+*/
+.navigation__item > a {
+  color: #d2d0db;
+  transition: color 0.3s;
+}
+
+.navigation__item > a:hover {
+  color: #fff;
+}
+
+.navigation__toggler {
+  opacity: 0.5;
+  transition: box-shadow 0.15s;
+  cursor: pointer;
+}
+
+/* 
+  We are selecting the element with both clases on it,
+    navigation_bar and collapsible__expanded
+*/
+.navigation_bar.collapsible__expanded .navigation__toggler {
+  opacity: 1;
+  box-shadow: 0 0 0 3px #666;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation__toggler {
+    display: none;
+  }
+
+  .navigation__list {
+    width: auto;
+    display: flex;
+    font-size: 1.6rem;
+    /* Changing opacity and max-height so items are always shown */
+    max-height: 100%;
+    opacity: 1;
+  }
+
+  .navigation__item {
+    border: 0;
+  }
+}
+
+/* Hero */
+
+.hero__tagline {
+  font-size: 2rem;
+  color: #b9c3cf;
+  letter-spacing: 1px;
+  margin: 2rem 0 5rem;
+}
+
+.hero__img {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .hero {
+    padding-top: 0;
+  }
+
+  .hero__content {
+    text-align: left;
+    align-self: center;
+  }
+}
+
+/* Domain */
+
+.domain .input_group {
+  box-shadow: 0 0 30px 20px #e6ebee;
+  border: 0;
+  margin: 4rem auto;
+  max-width: 700px;
+}
+
+.domain__prices {
+  color: var(--heading_color);
+  display: grid;
+  grid-template: repeat(4, 6rem) / repeat(2, 1fr);
+  font-size: 2rem;
+  font-weight: 600;
+  justify-items: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.domain__prices .list__item:last-child {
+  grid-column: 1 / -1;
+}
+
+@media screen and (min-width: 1024px) {
+  .domain__prices {
+    font-size: 1.5rem;
+    display: grid;
+    /* 
+      Using auto-fit to determine the number of columns automatically.
+      and minmax() function to provide a range, this function takes two values,
+      a minimum and a maximum.
+      */
+    grid-template: repeat(1, 6rem) / repeat(auto-fit, minmax(10rem, 1fr));
+  }
+
+  .domain__prices .list__item:last-child {
+    grid-column: auto;
+  }
+}
+
+/* Plan Block */
+
+.block_plan .plan {
+  font-size: 1.7rem;
+  margin: 0 auto;
+  max-width: 500px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.block_plan .grid {
+  gap: 8rem 4rem;
+}
+.block_plan .plan:hover {
+  transform: scale(1.03);
+}
+
+@media screen and (min-width: 1024px) {
+  .plan_block .plan {
+    min-width: 400px;
+  }
+}
+
+/* Features */
+
+.features {
+  gap: 4rem 2rem;
+  margin: 10rem 0;
+}
+
+.features:first-of-type {
+  margin-top: 6rem;
+}
+.features__img {
+  width: 100%;
+}
+
+.features__header {
+  margin: 2rem 0;
+}
+
+@media screen and (min-width: 768px) {
+  /*  
+    Here we are targeting the even (2nd, 4th, 6th, and so on) element on the features block.
+    Then we're gonna target the feature__content, and going to swap the order to 2 (
+      by default the order is 1).
+  */
+  .features:nth-of-type(even) .feature__content {
+    order: 2;
+  }
+}
+
+/* Showcase */
+
+.showcase__img > img {
+  width: 100%;
+}
+
+.showcase .media__title {
+  color: white;
+}
+
+@media screen and (min-width: 768px) {
+  .showcase .grid {
+    grid-template-columns: 50% 50%;
+  }
+
+  .showcase__img {
+    justify-self: end;
+  }
+
+  .showcase__img > img {
+    width: auto;
+    max-width: 700px;
+  }
+}
+
+/* Collapsible Block */
+
+.footer {
+  background: #232323;
+}
+
+.footer a {
+  color: #777;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: white;
+}
+
+.footer .collapsible {
+  padding-block: 2rem;
+  border-bottom: 1px solid #393939;
+}
+
+.footer__heading {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.footer__logo {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.footer__logo p {
+  margin: 0;
+  font-size: 2rem;
+  color: white;
+  opacity: 0.3;
+}
+
+.footer__img {
+  width: 100%;
+  max-width: 230px;
+}
+
+@media screen and (min-width: 768px) {
+  .footer__sections {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+
+  .footer .collapsible__content {
+    max-height: 100vh;
+    opacity: 1;
+  }
+
+  .footer .collapsible__icon {
+    display: none;
+  }
+
+  .footer__logo {
+    margin-top: 1rem;
+    order: -1;
+  }
+
+  .footer__logo p {
+    font-size: 1.5rem;
+  }
+
+  .footer__img {
+    height: 50px;
+    margin-bottom: 2rem;
+  }
+
+  .footer .collapsible {
+    border-bottom: none;
+  }
+}

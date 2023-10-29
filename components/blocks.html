@@ -1,0 +1,31 @@
+<!-- Appling container class to limit max width -->
+<section class="block container">
+  <!-- 1st block -->
+  <header class="block__header">
+    <h2 class="block__heading">Heading</h2>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate
+      laborum corporis, quo ipsa asperiores reprehenderit excepturi nostrum
+      nihil enim magnam quod mollitia eveniet sunt a!
+    </p>
+  </header>
+</section>
+
+<!-- 2nd block -->
+<section class="block block--dark block--skewed--left">
+  <!-- 
+      In the dark blocks, we cannot apply the 'container' element, the one that
+        limit the width of blocks, because if we have wide screens, the block
+        will grow to 1140px and beyond that white background will appear.
+      Insead we apply the container class INSIDE a div with the class of
+        'container'.
+    -->
+  <header class="container block__header">
+    <h2 class="block__heading">Heading</h2>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate
+      laborum corporis, quo ipsa asperiores reprehenderit excepturi nostrum
+      nihil enim magnam quod mollitia eveniet sunt a!
+    </p>
+  </header>
+</section>

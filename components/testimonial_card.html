@@ -1,0 +1,43 @@
+<div class="card testimonial__card grid grid--cols-2">
+  <div class="testimonial__image_cont">
+    <img src="./data/images/testimonial.jpg" alt="Image of a smiling person" />
+    <span class="icon_container icon_container--accent">
+      <svg class="icon icon--white icon--small">
+        <use xlink:href="/data/images/css_sprite.svg#quotes"></use>
+      </svg>
+    </span>
+  </div>
+  <!--
+        To represent an quote we can use:
+          The <q> element which is an inline element
+          or <blockquote> which is a block element
+      -->
+  <blockquote class="quote">
+    <!-- Ill use pseudo element selector to insert quotes ("") befor and after this paragraph -->
+    <p class="quote__text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
+      voluptatem quo consequatur hic rerum eveniet minus ipsam nisi provident
+      voluptatum praesentium odit in ducimus, amet voluptatibus atque sunt
+      magnam magni optio tempora eos sed incidunt quae.
+    </p>
+    <!--
+        A footer doesnt necessarily belongs to a page , it can be part of a section, article a component, etc.
+      -->
+    <footer>
+      <!--
+          Using media_object.html, because i can use that structure for this footer.
+        -->
+      <div class="media">
+        <div class="media__icon">
+          <svg class="icon icon--primary quote__line">
+            <use xlink:href="/data/images/css_sprite.svg#line"></use>
+          </svg>
+        </div>
+        <div class="media__body">
+          <h3 class="media__title quote__author">John Smith</h3>
+          <p class="media__description quote__company">ABC Company</p>
+        </div>
+      </div>
+    </footer>
+  </blockquote>
+</div>

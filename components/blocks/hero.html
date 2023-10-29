@@ -1,0 +1,35 @@
+<!--  
+  Classes go from more general classes to more specific clases, this is
+    because we use specific classes to step on some properties, for example
+    the hero class is stepping on some properties from block class.
+-->
+<section class="block block--dark block--skewed-left hero">
+  <div class="container grid grid--cols-2">
+    <header class="hero__content block__header">
+      <h1 class="block__heading">Cloud Hosting for Pros</h1>
+      <p class="hero__tagline">Deploy your website in less than 60 seconds.</p>
+      <!-- 
+          This button is an anchor because when the user clicks on it, they should
+            be redirected somewhere else, prehaps to the signup page, idk.
+        -->
+      <a class="btn btn--accent btn--streched_padding"> get started </a>
+    </header>
+    <picture>
+      <source
+        type="image/webp"
+        srcset="
+          ./data/images/resize_img/banner@1x.webp 1x,
+          ./data/images/resize_img/banner@2x.webp 2x
+        "
+      />
+      <source
+        type="image/png"
+        srcset="
+          ./data/images/resize_img/banner@1x.png 1x,
+          ./data/images/resize_img/banner@2x.png 2x
+        "
+      />
+      <img class="hero__img" src="./data/images/banner.png" alt="" />
+    </picture>
+  </div>
+</section>

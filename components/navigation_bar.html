@@ -1,0 +1,21 @@
+<nav class="navigation_bar collapsible">
+  <!-- 
+      Wraping logo in anchor so when user clicks it, hes redirectioned to homepage
+    -->
+  <a href="/" class="navigation__logo">
+    <img src="./data/images/logo.svg" alt="" />
+  </a>
+
+  <!-- navigation menu -->
+  <svg class="icon icon--white navigation__toggler">
+    <use xlink:href="/data/images/css_sprite.svg#menu"></use>
+  </svg>
+
+  <!-- Navigation items -->
+  <ul class="list navigation__list collapsible__content">
+    <li class="navigation__item"><a href="#">Hosting</a></li>
+    <li class="navigation__item"><a href="#">VPS</a></li>
+    <li class="navigation__item"><a href="#">Domain</a></li>
+    <li class="navigation__item"><a href="#">Pricing</a></li>
+  </ul>
+</nav>
